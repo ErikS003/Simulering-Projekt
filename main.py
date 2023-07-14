@@ -9,9 +9,6 @@ frame.pack()
 canvas = tk.Canvas(frame, width=400, height=300)    #creates canvas
 canvas.pack()
 
-Simbutton = tk.Button(frame, text="Start Simulation")   #creates button for starting simulation
-Simbutton.pack()
-
 balls = []
 def create_ball(event):     #event is the coordinate of where button 1 is activated
     x = event.x             #x-coordinate
@@ -28,8 +25,10 @@ def move_balls():
     canvas.after(100, move_balls)       #After 100 ms. Run move_balls again.
 #use interpolation to create smooth movement..
 
-#Simbutton.bind("", lambda event: move_balls())
-move_balls()
+Simbutton = tk.Button(frame, text="Start Simulation", command= move_balls)   #button that runs function move_ball
+Simbutton.pack()
+
+#move_balls()
 
 window.mainloop()
 
