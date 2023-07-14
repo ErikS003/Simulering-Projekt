@@ -13,11 +13,15 @@ Simbutton = tk.Button(frame, text="Start Simulation")   #creates button for star
 Simbutton.pack()
 
 balls = []
+balls_coord1 = []
+balls_coord2 = []
 def create_ball(event):     #event is the coordinate of where button 1 is activated
     x = event.x             #x-coordinate
     y = event.y             #y-coordinate
     ball = canvas.create_oval(x-10, y-10, x+10, y+10, fill="blue")      #Creates the ball
+    balls_coord1.append((x,y))
     balls.append(ball)      #put the ball in a list
+    print(balls_coord1)
 canvas.bind("<Button-1>", create_ball)    #When button 1 is activated. Create_ball function is run.
 
 def move_balls():
@@ -25,7 +29,9 @@ def move_balls():
         dx = random.randint(-3,3)       #Creates a random x-coordinate
         dy = random.randint(-3,3)       #Creates a random y-coordinate
         canvas.move(ball,dx,dy)         #Moves the ball dx amount in x direction and dy amount in y direction.
+        balls_coord2.append((dx,dy))
     canvas.after(100, move_balls)       #After 100 ms. Run move_balls again.
+    print(balls_coord2)
 #use interpolation to create smooth movement..
 
 #Simbutton.bind("", lambda event: move_balls())
