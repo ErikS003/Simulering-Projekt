@@ -26,8 +26,8 @@ canvas.bind("<Button-1>", create_ball)    #When button 1 is activated. Create_ba
 
 def move_balls():
     for ball in balls:      #goes through every ball created
-        dx = random.randint(-3,3)       #Creates a random x-coordinate
-        dy = random.randint(-3,3)       #Creates a random y-coordinate
+        dx = random.randint(-1,1)       #Creates a random x-coordinate
+        dy = random.randint(-1,1)       #Creates a random y-coordinate
         canvas.move(ball,dx,dy)         #Moves the ball dx amount in x direction and dy amount in y direction.
         balls_coord2.append((dx,dy))
     canvas.after(100, move_balls)       #After 100 ms. Run move_balls again.
