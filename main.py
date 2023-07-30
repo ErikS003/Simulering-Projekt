@@ -20,8 +20,12 @@ def create_ball(event):     #event is the coordinate of where button 1 is activa
     color = random.choice(["red","green","blue","yellow","black"])
     ball_nr = canvas.create_oval(x-r, y-r, x+r, y+r, fill=color)      #Creates the ball
     balls_coord1.append((x,y))
-    dx = random.randint(-2,2)       #Declares random speed in x direction
-    dy = random.randint(-2,2)       #Declares random speed in y direction
+    dx = dy = 0 #Declares random speed in x direction
+           #Declares random speed in y direction
+    while dx == 0 or dy == 0:
+        dx = random.randint(-2,2)
+        dy = random.randint(-2,2)
+
     balls.append((ball_nr,x,y,r,dx,dy))      #put the ball in a list with all its qualities
     #print(balls_coord1)
 canvas.bind("<Button-1>", create_ball)    #When button 1 is activated. Create_ball function is run.
