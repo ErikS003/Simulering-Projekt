@@ -12,11 +12,11 @@ canvas.pack()
 balls = []
 balls_coord1 = []
 balls_coord2 = []
-def create_ball(event):     #event is the coordinate of where button 1 is activated
+def create_ball():     #event is the coordinate of where button 1 is activated
     global balls
-    x = event.x             #x-coordinate
-    y = event.y             #y-coordinate
     r = random.randint(10,30) #randomize the radius of each ball between 10 and 30
+    x = random.randint(0,int(canvas["width"])-r)             #x-coordinate
+    y = random.randint(0,int(canvas["height"])-r)             #y-coordinate
     color = random.choice(["red","green","blue","yellow","black"])
     ball_nr = canvas.create_oval(x-r, y-r, x+r, y+r, fill=color)      #Creates the ball
     balls_coord1.append((x,y))
@@ -26,8 +26,10 @@ def create_ball(event):     #event is the coordinate of where button 1 is activa
         dy = random.randint(-2,2)     #Declares random speed in y direction
     balls.append((ball_nr,x,y,r,dx,dy))      #put the ball in a list with all its qualities
     #print(balls_coord1)
-canvas.bind("<Button-1>", create_ball)    #When button 1 is activated. Create_ball function is run.
 
+#canvas.bind("<Button-1>", create_ball)    #When button 1 is activated. Create_ball function is run.
+spawn = tk.Button(frame, text = "Spawn Ball", command = create_ball)
+spawn.pack()
 def move_balls():
     global balls
     for ball in balls:     #goes through every ball create
@@ -47,6 +49,7 @@ def move_balls():
 
 Simbutton = tk.Button(frame, text="Start Simulation", command= move_balls)   #button that runs function move_ball
 Simbutton.pack()
+
 
 #move_balls()
 
