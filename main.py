@@ -15,8 +15,8 @@ balls_coord2 = []
 def create_ball():     #event is the coordinate of where button 1 is activated
     global balls
     r = random.randint(10,30) #randomize the radius of each ball between 10 and 30
-    x = random.randint(0,int(canvas["width"])-r)             #x-coordinate
-    y = random.randint(0,int(canvas["height"])-r)             #y-coordinate
+    x = random.randint(0+r,int(canvas["width"])-r)             #x-coordinate
+    y = random.randint(0+r,int(canvas["height"])-r)             #y-coordinate
     color = random.choice(["red","green","blue","yellow","black"])
     ball_nr = canvas.create_oval(x-r, y-r, x+r, y+r, fill=color)      #Creates the ball
     balls_coord1.append((x,y))
